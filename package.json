@@ -1,0 +1,33 @@
+{
+  "name": "jest-environment-selenium",
+  "description": "Jest environment for running Selenium WebDriver tests",
+  "keywords": [
+    "jest",
+    "environment",
+    "selenium",
+    "webdriver"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "build": "babel -d dist src"
+  },
+  "main": "dist/index.js",
+  "bugs": "https://github.com/applitools/jest-environment-selenium/issues",
+  "repository": "applitools/jest-environment-selenium",
+  "license": "Apache-2.0",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/"
+  ],
+  "dependencies": {
+    "selenium-webdriver": "^3.6.0"
+  },
+  "peerDependencies": {
+    "jest": ">=22.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-node6": "^11.0.0"
+  }
+}
