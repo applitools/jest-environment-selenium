@@ -9,6 +9,7 @@
   ],
   "version": "0.0.0",
   "scripts": {
+    "lint": "eslint ./src",
     "build": "babel -d dist src"
   },
   "main": "dist/index.js",
@@ -21,6 +22,7 @@
     "dist/"
   ],
   "dependencies": {
+    "jest-environment-node": "^22.4.3",
     "selenium-webdriver": "^3.6.0"
   },
   "peerDependencies": {
@@ -28,6 +30,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-node6": "^11.0.0"
+    "babel-eslint": "^8.2.3",
+    "babel-preset-node6": "^11.0.0",
+    "eslint": "^4.19.1"
   }
 }

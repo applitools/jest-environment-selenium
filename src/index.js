@@ -1,5 +1,5 @@
-import NodeEnvironment from "jest-environment-node";
-import webdriver from "selenium-webdriver";
+import NodeEnvironment from 'jest-environment-node';
+import webdriver from 'selenium-webdriver';
 
 class WebdriverEnvironment extends NodeEnvironment {
   constructor(config) {
@@ -12,7 +12,6 @@ class WebdriverEnvironment extends NodeEnvironment {
     this.global.driver = await buildDriver(this.configuration);
     this.global.By = webdriver.By;
     this.global.until = webdriver.until;
-    console.log(this.global);
   }
 
   async teardown() {
