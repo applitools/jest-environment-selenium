@@ -12,6 +12,7 @@ class WebdriverEnvironment extends NodeEnvironment {
     this.global.driver = await buildDriver(this.configuration);
     this.global.By = webdriver.By;
     this.global.until = webdriver.until;
+    this.global.configuration = this.configuration;
   }
 
   async teardown() {
