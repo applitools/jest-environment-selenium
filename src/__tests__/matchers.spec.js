@@ -1,4 +1,4 @@
-import { toBePresent, toBeChecked, toBeEditable, toHaveSelectedValue } from '../matchers';
+import { toBePresent, toBeChecked, toBeEditable, toHaveSelectedValue, toHaveValue } from '../matchers';
 import WebElement from '../__mocks__/WebElement';
 
 describe('toBePresent', () => {
@@ -62,5 +62,18 @@ describe('toHaveSelectedValue', () => {
   it('should not match a different element', async () => {
     const e = new WebElement('button');
     expect((await toHaveSelectedValue.apply({isNot: false}, [e, 'something'])).message()).toContain('Expected to receive Select type WebElement');
+  });
+});
+
+describe('toHaveValue', () => {
+  it('should match a select element value', async () => {
+    const e = new WebElement('input');
+    e.value = 'test';
+    expect((await toHaveValue(e, e.value)).pass).toBeTruthy();
+  });
+  it('should not match a select element with a different value', async () => {
+    const e = new WebElement('input');
+    e.value = 'test';
+    expect((await toHaveValue(e, 'diff')).pass).toBeFalsy();
   });
 });
