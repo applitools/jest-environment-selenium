@@ -4,7 +4,14 @@ import webdriver from 'selenium-webdriver';
 class WebdriverEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
-    this.configuration = JSON.parse(process.env.configuration);
+    this.configuration = Object.assign(
+      {
+        capabilities: {
+          browserName: 'chrome'
+        }
+      },
+      config.testEnvironmentOptions.capabilities ? config.testEnvironmentOptions : JSON.parse(config.testEnvironmentOptions)
+    );
   }
 
   async setup() {
