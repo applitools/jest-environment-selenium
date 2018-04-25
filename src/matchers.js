@@ -1,4 +1,4 @@
-import { isWebElement } from './utils';
+import { isWebElement, isSelectElement } from './utils';
 
 export async function toBePresent(received) {
   try {
@@ -61,8 +61,44 @@ export async function toBeEditable(received) {
   }
 }
 
+export async function toHaveSelectedValue(received, expected) {
+  try {
+    if (await isSelectElement(received)) {
+      const value = await received.getAttribute('value');
+      return Object.is(value, expected) ?
+        {
+          actual: value,
+          message: () => this.utils.matcherHint('.not.toHaveSelectedValue') +
+          '\n\n' +
+          'Expected value to not be (using Object.is):\n' +
+          `  ${this.utils.printExpected(expected)}\n` +
+          'Received:\n' +
+          `  ${this.utils.printReceived(value)}`,
+          pass: true
+        }
+        :
+        {
+          actual: value,
+          message: () => this.utils.matcherHint('.toHaveSelectedValue') +
+          '\n\n' +
+          'Expected value to be (using Object.is):\n' +
+          `  ${this.utils.printExpected(expected)}\n` +
+          'Received:\n' +
+          `  ${this.utils.printReceived(value)}`,
+          pass: false
+        };
+    }
+  } catch (err) {
+    return {
+      message: () => err.message,
+      pass: this.isNot
+    };
+  }
+}
+
 export default {
   toBePresent,
   toBeChecked,
-  toBeEditable
+  toBeEditable,
+  toHaveSelectedValue
 };
