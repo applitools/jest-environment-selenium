@@ -9,10 +9,10 @@ describe('toBePresent', () => {
     expect((await toBePresent([new WebElement()])).pass).toBeTruthy();
   });
   it('should not match undefined', async () => {
-    expect((await toBePresent(undefined)).pass).toBeFalsy();
+    expect((await toBePresent.apply({isNot: false}, [undefined])).message()).toContain('Expected to receive WebElement');
   });
   it('should not match an empty array', async () => {
-    expect((await toBePresent([])).pass).toBeFalsy();
+    expect((await toBePresent.apply({isNot: false}, [[]])).message()).toContain('Expected to receive WebElement');
   });
   it('should not match a different type', async () => {
     expect((await toBePresent.apply({isNot: false}, [5])).message()).toContain('Expected to receive WebElement');

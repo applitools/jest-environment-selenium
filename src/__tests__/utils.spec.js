@@ -10,7 +10,7 @@ describe('isWebElement', () => {
     expect(isWebElement(new WebElementPromise())).toBeTruthy();
   });
   it('should fail for undefined', () => {
-    expect(isWebElement()).toBeFalsy();
+    expect(() => (isWebElement())).toThrow();
   });
   it('should throw for different type', () => {
     expect(() => (isWebElement(5))).toThrow();
