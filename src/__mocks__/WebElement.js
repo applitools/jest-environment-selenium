@@ -1,5 +1,6 @@
 export default class WebElement {
-  constructor() {
+  constructor(tagName = 'HTMLElement') {
+    this.tagName = tagName;
     this.selected = false;
     this.enabled = true;
     this.readonly = false;
@@ -9,6 +10,9 @@ export default class WebElement {
   }
   getAttribute(attr) {
     return Promise.resolve(this[attr]);
+  }
+  getTagName() {
+    return Promise.resolve(this.tagName);
   }
   isSelected() {
     return Promise.resolve(this.selected);
