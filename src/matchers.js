@@ -16,7 +16,7 @@ export function toBePresent(received) {
   } catch (err) {
     return {
       message: () => err.message,
-      pass: false
+      pass: this.isNot
     };
   }
 }

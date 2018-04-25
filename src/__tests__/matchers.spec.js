@@ -15,6 +15,6 @@ describe('toBePresent', () => {
     expect(toBePresent([]).pass).toBeFalsy();
   });
   it('should not match a different type', () => {
-    expect(toBePresent(5).message()).toContain('Expected to receive WebElement');
+    expect(toBePresent.apply({isNot: false}, [5]).message()).toContain('Expected to receive WebElement');
   });
 });
