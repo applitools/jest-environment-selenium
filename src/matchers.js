@@ -3,16 +3,18 @@ import { isWebElement, isSelectElement } from './utils';
 export async function toBePresent(received) {
   try {
     const elements = await received;
-    return isWebElement(Array.isArray(elements) ? elements[0] : elements) ?
-      {
-        message: () => 'Assertion failed: unexpected element was found in page',
-        pass: true
-      }
-      :
-      {
+    // undefined means the elements is not located, isWebElement will throw, so we can't reach it
+    if (!received || (Array.isArray(elements) && !elements[0])) {
+      return ({
         message: () => 'Assetion failed: expected element was not found in page',
         pass: false
-      };
+      });
+    } else if (isWebElement(Array.isArray(elements) ? elements[0] : elements)) {
+      return ({
+        message: () => 'Assertion failed: unexpected element was found in page',
+        pass: true
+      });
+    }
   } catch (err) {
     return {
       message: () => err.message,
