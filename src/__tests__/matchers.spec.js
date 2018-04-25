@@ -14,4 +14,7 @@ describe('toBePresent', () => {
   it('should not match an empty array', () => {
     expect(toBePresent([]).pass).toBeFalsy();
   });
+  it('should not match a different type', () => {
+    expect(toBePresent(5).message()).toContain('Expected to receive WebElement');
+  });
 });

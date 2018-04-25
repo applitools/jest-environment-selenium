@@ -8,8 +8,8 @@ describe('isWebElement', () => {
   it('should fail for undefined', () => {
     expect(isWebElement()).toBeFalsy();
   });
-  it('should fail for different type', () => {
-    expect(isWebElement(5)).toBeFalsy();
-    expect(isWebElement(new Date())).toBeFalsy();
+  it('should throw for different type', () => {
+    expect(() => (isWebElement(5))).toThrow();
+    expect(() => (isWebElement(new Date()))).toThrow();
   });
 });

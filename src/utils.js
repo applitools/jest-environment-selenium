@@ -1,3 +1,7 @@
 export function isWebElement(element) {
-  return element && element.constructor && element.constructor.name === 'WebElement';
+  if (element && element.constructor) {
+    if (element.constructor.name === 'WebElement') return true;
+    throw new TypeError(`Expected to receive WebElement but instead received ${element.constructor.name}`);
+  }
+  return false;
 }
