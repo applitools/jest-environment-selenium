@@ -1,4 +1,4 @@
-import { toBePresent, toBeChecked } from '../matchers';
+import { toBePresent, toBeChecked, toBeEditable } from '../matchers';
 import WebElement from '../__mocks__/WebElement';
 
 describe('toBePresent', () => {
@@ -28,5 +28,22 @@ describe('toBeChecked', () => {
   it('should not match an unchecked element', async () => {
     const e = new WebElement();
     expect((await toBeChecked(e)).pass).toBeFalsy();
+  });
+});
+
+describe('toBeEditable', () => {
+  it('should match a non-readonly, enable element', async () => {
+    const e = new WebElement();
+    expect((await toBeEditable(e)).pass).toBeTruthy();
+  });
+  it('should not match a readonly element', async () => {
+    const e = new WebElement();
+    e.readonly = true;
+    expect((await toBeEditable(e)).pass).toBeFalsy();
+  });
+  it('should not match a disabled element', async () => {
+    const e = new WebElement();
+    e.enabled = false;
+    expect((await toBeEditable(e)).pass).toBeFalsy();
   });
 });

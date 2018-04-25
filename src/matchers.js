@@ -41,7 +41,28 @@ export async function toBeChecked(received) {
   }
 }
 
+export async function toBeEditable(received) {
+  try {
+    return isWebElement(received) && await received.isEnabled() && !(await received.getAttribute('readonly')) ?
+      {
+        message: () => 'Assertion failed: element is editable',
+        pass: true
+      }
+      :
+      {
+        message: () => 'Assetion failed: element is not editable',
+        pass: false
+      };
+  } catch (err) {
+    return {
+      message: () => err.message,
+      pass: this.isNot
+    };
+  }
+}
+
 export default {
   toBePresent,
-  toBeChecked
+  toBeChecked,
+  toBeEditable
 };
