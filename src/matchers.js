@@ -131,10 +131,46 @@ export async function toHaveValue(received, expected) {
   }
 }
 
+export async function toHaveText(received, expected) {
+  try {
+    if (isWebElement(received)) {
+      const value = await received.getText();
+      return Object.is(value, expected) ?
+        {
+          actual: value,
+          message: () => this.utils.matcherHint('.not.toHaveText') +
+          '\n\n' +
+          'Expected value to not be (using Object.is):\n' +
+          `  ${this.utils.printExpected(expected)}\n` +
+          'Received:\n' +
+          `  ${this.utils.printReceived(value)}`,
+          pass: true
+        }
+        :
+        {
+          actual: value,
+          message: () => this.utils.matcherHint('.toHaveText') +
+          '\n\n' +
+          'Expected value to be (using Object.is):\n' +
+          `  ${this.utils.printExpected(expected)}\n` +
+          'Received:\n' +
+          `  ${this.utils.printReceived(value)}`,
+          pass: false
+        };
+    }
+  } catch (err) {
+    return {
+      message: () => err.message,
+      pass: this.isNot
+    };
+  }
+}
+
 export default {
   toBePresent,
   toBeChecked,
   toBeEditable,
   toHaveSelectedValue,
-  toHaveValue
+  toHaveValue,
+  toHaveText
 };
