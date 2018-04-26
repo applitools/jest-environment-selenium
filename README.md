@@ -1,4 +1,4 @@
-# jest-environment-selenium &middot; [![npm version](https://img.shields.io/npm/v/jest-environment-selenium.svg)](https://www.npmjs.com/package/jest-environment-selenium) [![Build Status](https://travis-ci.org/applitools/jest-environment-selenium.svg?branch=master)](https://travis-ci.org/applitools/jest-environment-selenium)![License](https://img.shields.io/npm/l/jest-environment-selenium.svg)  
+# jest-environment-selenium &middot; [![npm version](https://img.shields.io/npm/v/jest-environment-selenium.svg)](https://www.npmjs.com/package/jest-environment-selenium) [![Build Status](https://travis-ci.org/applitools/jest-environment-selenium.svg?branch=master)](https://travis-ci.org/applitools/jest-environment-selenium)  ![License](https://img.shields.io/npm/l/jest-environment-selenium.svg)  
 Jest environment for running Selenium WebDriver tests
 
 ### Installation
