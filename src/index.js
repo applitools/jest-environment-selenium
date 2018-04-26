@@ -10,7 +10,7 @@ class WebdriverEnvironment extends NodeEnvironment {
           browserName: 'chrome'
         }
       },
-      config.testEnvironmentOptions.capabilities ? config.testEnvironmentOptions : JSON.parse(config.testEnvironmentOptions)
+      config.testEnvironmentOptions
     );
   }
 
