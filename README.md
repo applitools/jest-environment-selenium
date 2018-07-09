@@ -42,12 +42,21 @@ By default tests will run against a local `chromedriver`, but you can easily spe
 
 ### Jest Environment Selenium
 
-Each test will be initialized with a `driver` according to the options (or a default chrome one)
+Tests will be initialized with a `driver` according to the options (or a default chrome one)
 ```js
 test('load wikipedia', () => {
   driver.get('https://en.wikipedia.org/wiki/Base64');
 });
 ```
+
+#### `cleanup`
+Kills the used session and starts a new one.
+
+```js
+afterEach(async () => (cleanup()));
+```
+
+Failing to call `cleanup` will result in non "idempotent" tests, which reuse the same WebDriver session (which can lead to difficult to debug errors in your tests).
 
 #### Caveats
 Since the tests are [async](https://facebook.github.io/jest/docs/en/asynchronous.html#resolves-rejects) make sure you return a `Promise` so that `jest` won't bail early

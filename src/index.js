@@ -12,18 +12,24 @@ class WebdriverEnvironment extends NodeEnvironment {
       },
       config.testEnvironmentOptions
     );
+    this.global.By = webdriver.By;
+    this.global.until = webdriver.until;
+    this.global.configuration = this.configuration;
+    this.global.cleanup = async () => {
+      await this.global.driver.quit();
+      this.global.driver = await buildDriver(this.configuration);
+    };
   }
 
   async setup() {
     await super.setup();
     this.global.driver = await buildDriver(this.configuration);
-    this.global.By = webdriver.By;
-    this.global.until = webdriver.until;
-    this.global.configuration = this.configuration;
   }
 
   async teardown() {
-    await this.global.driver.quit();
+    if (this.global.driver) {
+      await this.global.driver.quit();
+    }
     await super.teardown();
   }
 
