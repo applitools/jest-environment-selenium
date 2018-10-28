@@ -7,11 +7,12 @@
     "selenium",
     "webdriver"
   ],
-  "version": "1.1.0",
+  "version": "2.0.0",
   "scripts": {
     "test": "jest",
     "lint": "eslint ./src",
-    "build": "babel -d dist src --ignore=src/__*__"
+    "build": "babel -d dist src --ignore=src/__*__",
+    "prepublishOnly": "yarn build"
   },
   "main": "dist/index.js",
   "bugs": "https://github.com/applitools/jest-environment-selenium/issues",
@@ -22,12 +23,10 @@
     "README.md",
     "dist/"
   ],
-  "dependencies": {
-    "jest-environment-node": "^23.1.0",
-    "selenium-webdriver": "^3.6.0"
-  },
   "peerDependencies": {
-    "jest": ">=23.0.0"
+    "jest": ">=23.0.0",
+    "jest-environment-node": "^23.1.0",
+    "selenium-webdriver": "4.0.0-alpha.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
