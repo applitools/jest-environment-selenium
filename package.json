@@ -12,7 +12,7 @@
     "test": "jest",
     "lint": "eslint ./src",
     "build": "babel -d dist src --ignore=src/__*__",
-    "prepublishOnly": "yarn build"
+    "prepare": "yarn build"
   },
   "main": "dist/index.js",
   "bugs": "https://github.com/applitools/jest-environment-selenium/issues",
