@@ -1,5 +1,6 @@
 import NodeEnvironment from 'jest-environment-node';
 import webdriver from 'selenium-webdriver';
+import proxy from 'selenium-webdriver/proxy';
 
 class WebdriverEnvironment extends NodeEnvironment {
   constructor(config) {
@@ -42,6 +43,15 @@ async function buildDriver(configuration) {
   const driver = new webdriver.Builder().withCapabilities(configuration.capabilities);
 
   if (configuration.server) driver.usingServer(configuration.server);
+  if (configuration.proxyType) {
+    let prxy;
+    if (configuration.proxyType === 'socks') {
+      prxy = proxy.socks(configuration.proxyOptions.socksProxy, configuration.proxyOptions.socksVersion);
+    } else {
+      prxy = proxy[configuration.proxyType](configuration.proxyOptions);
+    }
+    driver.setProxy(prxy);
+  }
 
   return driver.build();
 }

@@ -35,7 +35,11 @@ By default tests will run against a local `chromedriver`, but you can easily spe
       "capabilities": {
         "browserName": "firefox"
       },
-      "server": "http://localhost:4444/wd/hub"
+      "server": "http://localhost:4444/wd/hub",
+      "proxyType": "manual",
+      "proxyOptions": {
+        "https": "http://127.0.0.1:3218"
+      }
     }
 }
 ```
