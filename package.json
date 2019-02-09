@@ -5,9 +5,10 @@
     "jest",
     "environment",
     "selenium",
-    "webdriver"
+    "webdriver",
+    "chromedriver"
   ],
-  "version": "2.1.0",
+  "version": "2.1.1",
   "scripts": {
     "test": "jest",
     "lint": "eslint ./src",
@@ -26,7 +27,8 @@
   "peerDependencies": {
     "jest": ">=23.0.0",
     "jest-environment-node": "^23.1.0",
-    "selenium-webdriver": "4.0.0-alpha.1"
+    "selenium-webdriver": "4.0.0-alpha.1",
+    "chromedriver": "^2.46.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

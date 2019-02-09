@@ -40,6 +40,11 @@ class WebdriverEnvironment extends NodeEnvironment {
 }
 
 async function buildDriver(configuration) {
+  var chrome = require('selenium-webdriver/chrome');
+  if (configuration.server){
+    var service = new chrome.ServiceBuilder('/Users/p/pro/demo/node_modules/chromedriver/bin/chromedriver').build();
+    chrome.setDefaultService(service);
+  }
   const driver = new webdriver.Builder().withCapabilities(configuration.capabilities);
 
   if (configuration.server) driver.usingServer(configuration.server);
