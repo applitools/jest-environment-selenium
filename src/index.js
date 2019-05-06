@@ -13,6 +13,7 @@ class WebdriverEnvironment extends NodeEnvironment {
       },
       config.testEnvironmentOptions
     );
+    this.global.webdriver = webdriver;
     this.global.By = webdriver.By;
     this.global.until = webdriver.until;
     this.global.configuration = this.configuration;
