@@ -1,6 +1,8 @@
 import { isWebElement, isSelectElement } from '../utils';
 import WebElement from '../__mocks__/WebElement';
 import WebElementPromise from '../__mocks__/WebElementPromise';
+import BlahWebElement from '../__mocks__/BlahWebElement';
+import BlahWebElementPromise from '../__mocks__/BlahWebElementPromise';
 
 describe('isWebElement', () => {
   it('should match a WebElement', () => {
@@ -8,6 +10,12 @@ describe('isWebElement', () => {
   });
   it('should match a WebElementPromise', () => {
     expect(isWebElement(new WebElementPromise())).toBeTruthy();
+  });
+  it('should match a WebElement', () => {
+    expect(isWebElement(new BlahWebElement())).toBeTruthy();
+  });
+  it('should match a WebElementPromise', () => {
+    expect(isWebElement(new BlahWebElementPromise())).toBeTruthy();
   });
   it('should fail for undefined', () => {
     expect(() => (isWebElement())).toThrow();
