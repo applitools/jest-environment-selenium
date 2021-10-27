@@ -26,7 +26,7 @@
   "peerDependencies": {
     "jest": ">=23.0.0",
     "jest-environment-node": "^23.1.0",
-    "selenium-webdriver": "4.0.0-alpha.1"
+    "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
